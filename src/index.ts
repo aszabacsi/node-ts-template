@@ -6,4 +6,4 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-server.listen(8000);
+server.listen(process.env.port || 8000);
