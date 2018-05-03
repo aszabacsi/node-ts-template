@@ -4,8 +4,9 @@
   "description": "Template for Node projects written in Typescript",
   "main": "src/index.ts",
   "scripts": {
-    "start": "dist/index.js",
-    "build": "build:ts",
+    "start": "node ./dist/index.js",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "build:watch": "watch:ts",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
