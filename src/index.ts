@@ -2,9 +2,7 @@ import * as cluster from 'cluster';
 import * as http from 'http';
 import * as os from 'os';
 import * as w from 'winston';
-import * as express from 'express';
-import { buildSchema } from 'graphql';
-import * as gql from 'express-graphql';
+import App from './App';
 
 if (cluster.isMaster) {
 
@@ -20,26 +18,8 @@ if (cluster.isMaster) {
 
 } else {
 
-  const schema = buildSchema(`
-    type Query {
-      test: String
-    }
-  `);
+  const app = new App();
 
-  const root = {
-    test: () => 'test',
-  };
-
-  const app = express();
-
-  app.use('/api', gql({
-    schema,
-    rootValue: root,
-    graphiql: true,
-  }));
-
-  app.listen(process.env.PORT || 8000, () => {
-    w.info('Server is running...');
-  });
+  app.run();
 
 }
