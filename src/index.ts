@@ -3,8 +3,10 @@ import * as http from 'http';
 import * as os from 'os';
 import * as w from 'winston';
 import App from './App';
+import config from './config';
+config();
 
-if (cluster.isMaster) {
+if (process.env.MODE === 'PROD' && cluster.isMaster) {
 
   const n = os.cpus().length;
 
