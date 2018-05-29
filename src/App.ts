@@ -2,6 +2,7 @@ import * as express from 'express';
 import { buildSchema } from 'graphql';
 import * as gql from 'express-graphql';
 import * as w from 'winston';
+import schema from './graphql/schema';
 
 class App {
 
@@ -13,28 +14,14 @@ class App {
     this.setRoutes();
   }
 
-  public clone(): App {
-    return new App();
-  }
-
   public configure(): void {
     w.info('Configuring the application');
   }
 
   public setRoutes(): void {
-    const schema = buildSchema(`
-      type Query {
-        test: String
-      }
-    `);
-
-    const root = {
-      test: () => 'test',
-    };
 
     this.app.use('/api', gql({
       schema,
-      rootValue: root,
       graphiql: true,
     }));
 
