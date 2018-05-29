@@ -19,3 +19,11 @@ export const getUsers = (id: number): AxiosPromise => {
 export const addUser = (firstName: string, lastName: string): AxiosPromise => {
   return io.post('/users', { firstName, lastName });
 }
+
+export const deleteUser = (id: number): AxiosPromise => {
+  return io.delete(`/users/${id}`);
+}
+
+export const modifyUser = (id: number, firstName: string, lastName: string): AxiosPromise => {
+  return io.patch(`/users/${id}`, { firstName, lastName });
+}
