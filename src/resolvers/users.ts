@@ -12,7 +12,7 @@ const io = axios.create({
   baseURL: BASE_URL
 })
 
-export const getUsers = (id: number): AxiosPromise => {
+export const getUser = (id: number): AxiosPromise => {
   return io.get(`/users/${id}`);
 }
 

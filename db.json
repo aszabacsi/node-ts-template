@@ -3,17 +3,32 @@
     {
       "id": 0,
       "firstName": "Bob",
-      "lastName": "Big"
+      "lastName": "Big",
+      "companyId": 1
     },
     {
       "id": 1,
-      "firstName": "Helly",
-      "lastName": "Hamsten"
+      "firstName": "Smelly",
+      "lastName": "Hamsten",
+      "companyId": 0
     },
     {
       "id": 2,
       "firstName": "Sally",
-      "lastName": "McSalad"
+      "lastName": "McSalad",
+      "companyId": 1
+    }
+  ],
+  "companies": [
+    {
+      "id": 0,
+      "name": "FaceFoo",
+      "country": "Murica"
+    },
+    {
+      "id": 1,
+      "name": "Swatter",
+      "country": "Maple Leaf Kingdom"
     }
   ]
 }

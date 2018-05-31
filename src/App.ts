@@ -3,6 +3,7 @@ import { buildSchema } from 'graphql';
 import * as gql from 'express-graphql';
 import * as w from 'winston';
 import schema from './graphql/schema';
+import * as cors from 'cors';
 
 class App {
 
@@ -16,6 +17,7 @@ class App {
 
   public configure(): void {
     w.info('Configuring the application');
+    this.app.use(cors());
   }
 
   public setRoutes(): void {

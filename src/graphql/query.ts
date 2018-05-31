@@ -4,7 +4,7 @@ import {
   GraphQLString,
 } from 'graphql';
 
-import { getUsers } from '../resolvers/users';
+import { getUser } from '../resolvers/users';
 import { userType } from './types';
 
 const query = new GraphQLObjectType({
@@ -14,7 +14,7 @@ const query = new GraphQLObjectType({
       type: userType,
       args: { id: { type: GraphQLInt }},
       resolve: (parentValue, args) => {
-        return getUsers(args.id)
+        return getUser(args.id)
         .then(resp => resp.data)
       }
     }

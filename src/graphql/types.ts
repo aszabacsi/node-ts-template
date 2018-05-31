@@ -6,6 +6,16 @@ import {
   GraphQLBoolean
 } from 'graphql';
 
+import { getCompany } from '../resolvers/company';
+
+export const companyType = new GraphQLObjectType({
+  name: 'company',
+  fields: {
+    id: { type: GraphQLInt },
+    name: { type: GraphQLString },
+  }
+});
+
 export const userType = new GraphQLObjectType({
   name: 'user',
   fields: {
@@ -18,6 +28,13 @@ export const userType = new GraphQLObjectType({
     lastName: { 
       type: GraphQLString 
     },
+    company: {
+      type: companyType,
+      resolve: (parentValue, args) => {
+        return getCompany(parentValue.companyId)
+        .then(res => res.data)
+      }
+    }
   }
 });
 
