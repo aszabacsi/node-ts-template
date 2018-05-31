@@ -1,10 +1,6 @@
-import axios, { AxiosPromise } from 'axios';
+import { AxiosPromise } from 'axios';
+import { io } from '../io';
 
-const BASE_URL = 'http://localhost:4000';
-
-const io = axios.create({
-  baseURL: BASE_URL
-})
 
 export interface Company {
   id: number;

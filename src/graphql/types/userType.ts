@@ -3,20 +3,14 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLSchema,
-  GraphQLBoolean
+  GraphQLBoolean,
+  GraphQLList
 } from 'graphql';
 
-import { getCompany } from '../resolvers/company';
+import { getCompany } from '../../resolvers/company';
+import { companyType } from '.';
 
-export const companyType = new GraphQLObjectType({
-  name: 'company',
-  fields: {
-    id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-  }
-});
-
-export const userType = new GraphQLObjectType({
+const userType: GraphQLObjectType = new GraphQLObjectType({
   name: 'user',
   fields: {
     id: { 
@@ -38,11 +32,4 @@ export const userType = new GraphQLObjectType({
   }
 });
 
-export const successType = new GraphQLObjectType({
-  name: 'success',
-  fields: {
-    success: { 
-      type: GraphQLBoolean
-    },
-  }
-});
+export default userType;
