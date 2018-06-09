@@ -1,7 +1,6 @@
 import { AxiosPromise } from 'axios';
 import { io } from '../io';
 
-
 export interface Company {
   id: number;
   name: string;
@@ -10,4 +9,4 @@ export interface Company {
 
 export const getCompany = (id: number): AxiosPromise<Company> => {
   return io.get(`/companies/${id}`);
-}
+};
