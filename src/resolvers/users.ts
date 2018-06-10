@@ -1,24 +1,21 @@
-import axios, { AxiosPromise } from 'axios';
-import { io } from '../io';
-
 export interface User {
   id: number;
   firstName: string;
   lastName: string;
 }
 
-export const getUser = (id: number): AxiosPromise => {
-  return io.get(`/users/${id}`);
+export const getUser = (id: number): Promise<void> => {
+  //TODO GET USER RESOLVER
 };
 
-export const addUser = (firstName: string, lastName: string): AxiosPromise => {
-  return io.post('/users', { firstName, lastName });
+export const addUser = (firstName: string, lastName: string): Promise<void> => {
+  //TODO ADD USER RESOLVER
 };
 
-export const deleteUser = (id: number): AxiosPromise => {
-  return io.delete(`/users/${id}`);
+export const deleteUser = (id: number): Promise<void> => {
+  //TODO DELETE USER RESOLVER
 };
 
-export const modifyUser = (id: number, firstName: string, lastName: string): AxiosPromise => {
-  return io.patch(`/users/${id}`, { firstName, lastName });
+export const modifyUser = (id: number, firstName: string, lastName: string): Promise<void> => {
+  //TODO MODIFY USER RESOLVER
 };

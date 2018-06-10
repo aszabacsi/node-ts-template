@@ -2,9 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLSchema,
-  GraphQLBoolean,
-  GraphQLList
+  GraphQLList,
 } from 'graphql';
 
 import { getCompany } from '../../resolvers/company';
@@ -18,7 +16,6 @@ const companyType: GraphQLObjectType = new GraphQLObjectType({
     users : {
       type: new GraphQLList(userType),
       resolve: () => {
-
       }
     }
   }
