@@ -3,8 +3,8 @@ import axios, { AxiosPromise } from 'axios';
 const BASE_URL = 'http://localhost:4000';
 
 const io = axios.create({
-  baseURL: BASE_URL
-})
+  baseURL: BASE_URL,
+});
 
 export interface Company {
   id: number;

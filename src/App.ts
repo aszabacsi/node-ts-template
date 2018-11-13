@@ -1,5 +1,4 @@
 import * as express from 'express';
-import { buildSchema } from 'graphql';
 import * as gql from 'express-graphql';
 import * as w from 'winston';
 import schema from './graphql/schema';
@@ -30,7 +29,7 @@ class App {
   }
 
   public run(): void {
-    this.app.listen(process.env.PORT || 8000, () => {
+    this.app.listen(process.env.port || 8000, () => {
       w.info('Server is running...');
     });
   }

@@ -1,12 +1,11 @@
 import * as cluster from 'cluster';
-import * as http from 'http';
 import * as os from 'os';
 import * as w from 'winston';
 import App from './App';
 import config from './config';
 config();
 
-if (process.env.MODE === 'PROD' && cluster.isMaster) {
+if (process.env.mode === 'PROD' && cluster.isMaster) {
 
   const n = os.cpus().length;
 
