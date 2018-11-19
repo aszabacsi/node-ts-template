@@ -1,13 +1,10 @@
 import {
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString,
 } from 'graphql';
 
 import { getUser } from '../resolvers/users';
-import { userType, companyType } from './types';
-import { parseConstValue } from 'graphql/language/parser';
-import { getCompany } from '../resolvers/company';
+import { userType } from './types';
 
 const query = new GraphQLObjectType({
   name: 'query',
@@ -20,14 +17,6 @@ const query = new GraphQLObjectType({
         .then(res => res.data)
       }
     },
-    company: {
-      type: companyType,
-      args: { id: { type: GraphQLInt }},
-      resolve: (parentValue, args) => {
-        return getCompany(args.id)
-        .then(res => res.data)
-      }
-    }
   }
 });
 

@@ -1,8 +1,6 @@
 import {
   GraphQLObjectType,
   GraphQLInt,
-  GraphQLString,
-  GraphQLBoolean,
   GraphQLNonNull
 } from 'graphql';
 
@@ -13,19 +11,20 @@ const mutation = new GraphQLObjectType({
   name: 'mutation',
   fields: {
     addUser: {
-      type: successType,
+      type: userType,
       args: { 
-        firstName: { type: new GraphQLNonNull(GraphQLString) },
-        lastName: { type: new GraphQLNonNull(GraphQLString) }
+        user: {
+          type: new GraphQLNonNull(userType),
+        },
       },
-      resolve: (parentValue, args) => {
-        return addUser(args.firstName, args.lastName)
+      resolve: (parentValue, { user }) => {
+        return addUser(user)
         .then(() => ({ success: true }))
         .catch(() => ({ success: false }))
       }
     },
     deleteUser: {
-      type: successType,
+      type: userType,
       args: { 
         id: { type: new GraphQLNonNull(GraphQLInt) } 
       },
@@ -38,12 +37,12 @@ const mutation = new GraphQLObjectType({
     modifyUser: {
       type: userType,
       args: { 
-        firstName: { type: GraphQLString },
-        lastName: { type: GraphQLString },
-        id: { type: new GraphQLNonNull(GraphQLInt) } 
+        user: {
+          type: new GraphQLNonNull(userType),
+        }
       },
-      resolve: (parentValue, args) => {
-        return modifyUser(args.id, args.firstName, args.lastName)
+      resolve: (parentValue, { user }) => {
+        return modifyUser(user)
         .then(resp => resp.data)
       }
     },

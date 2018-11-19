@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as gql from 'express-graphql';
-import * as w from 'winston';
+import logger from './logger';
 import schema from './graphql/schema';
 import * as cors from 'cors';
 import * as http from 'http';
@@ -18,7 +18,7 @@ class Gateway {
   }
 
   public configure(): void {
-    w.info('Configuring the Gatewaylication');
+    logger.info('Configuring the Gateway Application');
     this.gateway.use(cors());
   }
 
@@ -36,10 +36,9 @@ class Gateway {
 
   public run(): void {
     this.gateway.listen(process.env.PORT || 8000, () => {
-      w.info('Server is running...');
+      logger.info('Server is running...');
     });
   }
-
 }
 
 export default Gateway;

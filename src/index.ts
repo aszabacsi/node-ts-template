@@ -1,26 +1,10 @@
-import config from './config';
-config();
 import * as cluster from 'cluster';
 import * as os from 'os';
-
+import config from './config';
+config();
 import Gateway from './Gateway';
 
-import * as message from './message';
-
-message.send('CREDENTIALS', {
-  username: 'admin',
-  password: 'password',
-  salt: 'salt'
-})
-.then(res => {
-  console.log('success', res);
-})
-.catch(err => {
-  console.log('err', err);
-});
-
-
-if (process.env.MODE === 'PROD' && cluster.isMaster) {
+if (process.env.mode === 'PROD' && cluster.isMaster) {
 
   const n = os.cpus().length;
 

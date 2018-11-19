@@ -2,13 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
-  GraphQLSchema,
-  GraphQLBoolean,
-  GraphQLList
 } from 'graphql';
-
-import { getCompany } from '../../resolvers/company';
-import { companyType } from '.';
 
 const userType: GraphQLObjectType = new GraphQLObjectType({
   name: 'user',
@@ -21,13 +15,6 @@ const userType: GraphQLObjectType = new GraphQLObjectType({
     },
     lastName: { 
       type: GraphQLString 
-    },
-    company: {
-      type: companyType,
-      resolve: (parentValue, args) => {
-        return getCompany(parentValue.companyId)
-        .then(res => res.data)
-      }
     }
   }
 });
